@@ -3,6 +3,8 @@ var gridSize = 60;
 var grid;
 
 let cube1;
+
+//define permutation cycles for face turns
 let perms = {
 	u: [[0,2,8,6],[1,5,7,3],[38,29,20,11],[37,28,19,10],[36,27,18,9]],
 	l: [[9,11,17,15],[10,14,16,12],[0,18,45,44],[3,11,48,41],[6,24,51,38]],
@@ -28,7 +30,7 @@ function setup() {
 
 	console.log(cube1);
 	console.log(cube1.checkState());
-	cube1.up(0);
+	cube1.perm('U2');
 	cube1.show();
 }
 

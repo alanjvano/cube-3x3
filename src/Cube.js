@@ -10,8 +10,9 @@ class Cube {
 			}
 		}
 	}
-
-	checkState() {
+	
+	
+	checkState() { //check value of cube 
 		for (var i = 0; i < 6; i++) {
 			for (var j = 0; j < 9; j++) {
 				if (this.cube[i*9+j] != i) {
@@ -22,26 +23,67 @@ class Cube {
 		return this.state;
 	}
 
-	up(clkws) {
-		var buffer = this.cube;  //define temp cube to adjust
-		var buf_u = perms.u;  //define temp perm cycle to adjust
-
-		//for clockwise direction reverse permutation cycles
-		if (clkws) {
-			for (var k = 0; k < perms.u.length; k++) {
-				buf_u[k] = buf_u[k].reverse();
-			}
-		}
-		console.log(buf_u);
+	perm(p_str) {
 		
-		//rotate up layer	
-		for (var i = 0; i < perms.u.length; i++) {
-			for (var j = 0; j < perms.u[i].length; j++) {
-					buffer[buf_u[i][j]] = this.cube[buf_u[i][(j+1)%4]];
+		// split permuation str into individual chars and push them to array	
+		let p = [];
+		for (var i = 0; i < p_str.length; i++) {
+			
+			if (p_str.charAt((i+1)%p_str.length) != '2') {
+				//check upper case
+				var tmp = (p_str.charAt(i) == p_str.charAt(i).toUpperCase());
+				
+				//output [face, direction (1 = c, 0 = cc), doubleturn (1 yes)]
+				p.push([p_str.charAt(i).toLowerCase(), tmp, 0]);
+			} else {
+				//if double turn, then add the next char as well
+				//and increment counter	
+				p.push([p_str.charAt(i).toLowerCase(), 1, 1]);
+				i++;
 			}
 		}
+		console.log(p);
 
+		//implement turn sequence in order	
+		for (let each of p) {
+			console.log(each);
+			this.turn(each);
+		}
+
+	}
+
+	turn(dir) {
+		let buffer = this.cube;  //define temp cube to adjust
+		let cycle = perms[dir[0]];  //choose permutation cycle
+		console.log(cycle);
+
+		console.log(this.cube);
+		//for clockwise direction reverse permutation cycles
+		if (dir[1]) {
+			for (var k = 0; k < cycle.length; k++) {
+				cycle[k] = cycle[k].reverse();
+			}
+		}
+		console.log(cycle);
+		
+		//rotate layer twice if double specified
+		for (var i = 0; i < cycle.length; i++) {
+			for (var j = 0; j < cycle[i].length; j++) {
+				let target = (j+1+dir[2])%4; //(j == 3) ? 4 : (j+1)%4;
+				console.log('cube pos', cycle[i][j], 'target pos', cycle[i][target]);
+				console.log('j+1',j+1);
+				//console.log(target);
+				//console.log(cycle[i][target]);
+				console.log('before',this.cube);
+				console.log(this.cube[cycle[i][target]]);
+				buffer[cycle[i][j]] = this.cube[cycle[i][target]];
+				console.log('after', this.cube);
+			}
+		}
+		
+		console.log('final before', this.cube);
 		this.cube = buffer; //match current cube to buffer
+		console.log('final', this.cube);
 	}
 	
 	matchGrid() {
