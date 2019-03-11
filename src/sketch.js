@@ -1,7 +1,6 @@
 const cols = 12, rows = 9;
 const gridSize = 60;
 let grid;
-
 let cube1;
 
 //define permutation cycles for face turns
@@ -22,6 +21,22 @@ function makeGrid(cols,rows) {
 	}
 	return arr;
 }
+
+// perfoms deep clone of object for passing object value into functions
+// credit: Paul Varghese
+function clone(obj) {
+	if (obj == null || typeof(obj) != 'object') {
+		return obj;
+	}
+
+	var temp = new obj.constructor();
+	for (var key in obj) {
+		temp[key] = clone(obj[key]);
+	}
+
+	return temp;
+}
+
 
 function setup() {
 	createCanvas(cols*gridSize+10, cols*gridSize+10);

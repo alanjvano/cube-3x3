@@ -46,15 +46,16 @@ Cube.prototype.perm = function(p_str) {
 	//implement turn sequence in order	
 	for (let each of p) {
 		console.log(each);
-		this.cube = this.turn(each);
+		this.cube = this.turn(each, this.cube);
 	}
 
 };
 
-Cube.prototype.turn = function(dir) {
-	let current = this.cube;  //to avoid reassignment issues
-	let buffer = current;  //define temp cube to adjust
-	let cycle = perms[dir[0]];  //choose permutation cycle
+Cube.prototype.turn = function(dir, cube) {
+	//let args = clone(Array.prototype.slice.call(arguments));
+	let current = clone(cube);  //to avoid reassignment issues
+	let buffer = clone(current);  //define temp cube to adjust
+	let cycle = clone(perms[dir[0]]);  //choose permutation cycle
 	console.log(cycle);
 
 	console.log(current);
@@ -76,7 +77,7 @@ Cube.prototype.turn = function(dir) {
 			//console.log(cycle[i][target]);
 			console.log('before',current);
 			console.log(current[cycle[i][target]]);
-			const z = current[(cycle[i][target])];
+			let z = clone(current[(cycle[i][target])]);
 			buffer[cycle[i][j]] = z;
 			console.log('after',current);
 			/*problem with continuous assignment
