@@ -1,11 +1,11 @@
-var cols = 12, rows = 9;
-var gridSize = 60;
-var grid;
+const cols = 12, rows = 9;
+const gridSize = 60;
+let grid;
 
 let cube1;
 
 //define permutation cycles for face turns
-let perms = {
+const perms = {
 	u: [[0,2,8,6],[1,5,7,3],[38,29,20,11],[37,28,19,10],[36,27,18,9]],
 	l: [[9,11,17,15],[10,14,16,12],[0,18,45,44],[3,11,48,41],[6,24,51,38]],
 	f: [[18,20,26,24],[19,23,25,21],[6,27,47,17],[7,30,46,14],[8,33,45,11]],
@@ -16,8 +16,8 @@ let perms = {
 
 
 function makeGrid(cols,rows) {
-	var arr = new Array(cols);
-	for (var i =0; i < arr.length; i ++) {
+	let arr = new Array(cols);
+	for (let i =0; i < arr.length; i ++) {
 		arr[i] = new Array(rows);
 	}
 	return arr;
@@ -30,11 +30,11 @@ function setup() {
 
 	console.log(cube1);
 	console.log(cube1.checkState());
-	cube1.perm('U2');
+	cube1.perm('');
 	cube1.show();
 }
 
 function draw() {
-  background(255);
+	background(255);
 	cube1.show();
 }
