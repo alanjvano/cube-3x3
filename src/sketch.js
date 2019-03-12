@@ -1,10 +1,13 @@
 const cols = 12, rows = 9;
 const gridSize = 60;
 const valid_perm = ["u","l","f","r","b","d"]
+
 let grid;
 let cube1;
+
 let perm_in;
 let scr_in;
+let rst_in;
 
 //define permutation cycles for face turns
 const perms = {
@@ -24,6 +27,12 @@ function getVal(e, id) {
 			scr_in = document.getElementById("scramble").value;
 			//alert(scr_in);
 		}
+	}
+}
+
+function clickEvent(id) {
+	if (id == "rst") {
+		rst_in = true;	
 	}
 }
 
@@ -76,6 +85,13 @@ function draw() {
 		cube1.perm(cube1.scramble(scr_in));
 		scr_in = null;
 	}
+
+	// check reset
+	if (rst_in) {
+		cube1.reset();
+		rst_in = false;
+	}
+
 	cube1.show();
 	//debugger;
 }

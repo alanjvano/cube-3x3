@@ -14,15 +14,15 @@ body {
 
 form {
 	text-align: center;
-	display: inline;
 }
 
 input {
 	margin: 5px 50px 10px 5px;
+	width: 150px;
 }
 
 input.std {
-	margin: 10px 5px 10px 5px;
+	margin: 10px 25px 10px 5px;
 }
 
 h1, h2, h3 {
@@ -37,7 +37,7 @@ h1.standard {
 }
 
 div.standard {
-	margin: auto;
+	margin: 0px;
 	padding: 20px;
 	align: center;
 }
@@ -47,4 +47,13 @@ button.norm_button {
 	display: block;
 	width: 100px;
 	margin 5px auto 0px auto;
+}
+
+#outer {
+	width: 100%;
+	text-align: center;
+}
+
+.inner {
+	display: inline-block;
 }

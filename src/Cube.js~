@@ -33,24 +33,17 @@ Cube.prototype.scramble = function(scr_len) {
 		
 		// if scramble not empty, remove previous permutation from valid list
 		if (scr.length != 0) {
-			console.log("prev", prev);
 			index = valid.indexOf(prev);
-			console.log("index of prev", index);
 			valid.splice(index,1);
 		}
 		
-		console.log("valid",valid);
 		// choose random valid permutation and add to permutation list
 		tmp = Math.floor(Math.random()*(valid.length));
-		console.log("random index", tmp);
 		scr.push(valid[tmp]);
 		prev = valid[tmp];
-		console.log("scr", scr);
 
 		// pick random direction: clockwise, counterclockwise, or double
 		tmp = Math.floor(Math.random()*3)
-		console.log("dir", tmp);
-		console.log("target", scr[scr.length-1]);
 		if (tmp == 0) {
 			scr[scr.length-1] = scr[scr.length-1].toUpperCase();
 		} else if (tmp == 1) {
@@ -63,6 +56,7 @@ Cube.prototype.scramble = function(scr_len) {
 		valid = clone(valid_perm);			
 	}
 
+	scr = scr.join('');
 	console.log("scramble", scr);
 	return scr;
 }

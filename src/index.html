@@ -18,15 +18,19 @@
 
 <h1 align="center" class="standard">3x3-solver</h1>
  
-<div class="standard">
-	<form>
+<div class="standard" id="outer">
+	<div class="inner"> <form>
 		enter permutation: 
 		<input type="text" id="move" name="txt" onkeypress="getVal(event, id);">
 		<!-- <button type="button" class="norm_button" id="but1" onclick="getVal();">submit</button> -->
 		enter scramble length: 
-		<input type="text" id="scramble" value = "0" class="std" onkeypress="getVal(event,id);">
+		<input type="text" id="scramble" value = "0" class="std" style="width: 50px;" onkeypress="getVal(event,id);">
 		<!-- 	<button type="button" class="norm_button" id="scr_but" onclick="clickEvent(event,id)">scramble</button> -->
-	</form>
+	</form> </div>
+
+	<div class="inner">
+		<button type="button" class="norm_button" id="rst" onclick="clickEvent(id)">reset cube</button>
+	</div>
 </div>
 
 <script> 

@@ -61,6 +61,15 @@ Cube.prototype.scramble = function(scr_len) {
 	return scr;
 }
 
+Cube.prototype.reset = function() {
+	for (let i = 0; i < 6; i++) {
+		for (let j = 0; j < 9; j++) {
+			this.cube[i*9+j]=i;
+		}
+	}
+	
+}
+
 Cube.prototype.perm = function(p_str) {
 	
 	// split permuation str into individual chars and push them to array	
