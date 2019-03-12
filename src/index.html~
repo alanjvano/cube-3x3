@@ -24,7 +24,13 @@
 </div>
 
 <script> 
-	
+	function getVal(e) {
+		if (e.which == 13 || e.keyCode == 13) {
+			perm_in = document.getElementById("move").value;
+			console.log(perm_in);
+		}
+	}
+
 </script>
 
 <div id="canvas-holder" align="center">

@@ -11,7 +11,7 @@ var Cube = function() {
 };
 	
 	
-Cube.prototype.checkState = function() { //check value of cube 
+Cube.prototype.checkState = function() { //check solved state of cube 
 	for (let i = 0; i < 6; i++) {
 		for (let j = 0; j < 9; j++) {
 			if (this.cube[i*9+j] != i) {
@@ -43,6 +43,14 @@ Cube.prototype.perm = function(p_str) {
 	}
 	console.log(p);
 
+	//check for invalid input
+	for (let i = 0; i < p.length; i++) {
+		if (!valid_perm.includes(p[i][0])) {
+			console.log("not valid input");
+			return false;
+		}
+	}
+		
 	//implement turn sequence in order	
 	for (let each of p) {
 		console.log(each);
@@ -56,7 +64,6 @@ Cube.prototype.turn = function(dir, cube) {
 	let current = clone(cube);  //to avoid reassignment issues
 	let buffer = clone(current);  //define temp cube to adjust
 	let cycle = clone(perms[dir[0]]);  //choose permutation cycle
-	console.log(cycle);
 
 	console.log(current);
 	//for clockwise direction reverse permutation cycles
@@ -75,11 +82,11 @@ Cube.prototype.turn = function(dir, cube) {
 			//console.log('j+1',j+1);
 			//console.log(target);
 			//console.log(cycle[i][target]);
-			console.log('before',current);
-			console.log(current[cycle[i][target]]);
+			//console.log('before',current);
+			//console.log(current[cycle[i][target]]);
 			let z = clone(current[(cycle[i][target])]);
 			buffer[cycle[i][j]] = z;
-			console.log('after',current);
+			//console.log('after',current);
 			/*problem with continuous assignment
 			let tmp;
 			const before = current;
@@ -93,10 +100,7 @@ Cube.prototype.turn = function(dir, cube) {
 		}
 	}
 	
-	console.log('final before', current);
-	//current = buffer; //match current cube to buffer
-	console.log('final', current);
-
+	console.log(buffer);
 	return buffer;
 };
 

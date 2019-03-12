@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+html {
+	font-family: "Lucida Sans Unicode";
+	font-size: 20px;
+	background-color: white;
+}
+
+body {
+	background-color: rgb(255, 255, 255);
+	font-size: 15px;
+	justify-content: center;
+}
+
+h1, h2, h3 {
+	background-color: #000;
+	font-size: 25px;
+}
+
+h1.standard {
+	border-bottom: 3px solid rgb(76, 66, 218);
+	background-color: white;
+}
+
+div.standard {
+	margin: auto;
+	padding: 20px;
+}
+
+button..norm_button {
+	font-family: Arial, sans-serif;
+	display: block;
+	width: 100px;
+	margin 10px auto 0px auto;
+}
