@@ -24,7 +24,7 @@ The cube visualized as follows, where each values represents the cube object's c
 L F R B
 - D - -
 
-**-**|**-**|**-**|**0**|**1**|**2**|**-**|**-**|**-**|**-**|**-**|**-**
+-|-|-|0|1|2|-|-|-|-|-|-
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
 -|-|-|3|4|5|-|-|-|-|-|-
 -|-|-|6|7|8|-|-|-|-|-|-
@@ -34,7 +34,6 @@ L F R B
 -|-|-|45|46|47|-|-|-|-|-|-
 -|-|-|48|49|50|-|-|-|-|-|-
 -|-|-|51|52|53|-|-|-|-|-|-
-
 
 A canonical cycle notations is used to define each clockwise permutation.  
 To turn a face counter-clockwise, the permutation cycle is simply reversed.
