@@ -20,9 +20,10 @@ Here, the faces are represented by
 
 The cube visualized as follows, where each values represents the cube object's corresponding array indice:
 
-- U - -
-L F R B
-- D - -
+-|U|-|-
+:-----:|:-----:|:-----:|:-----:
+L|F|R|B
+-|D|-|-
 
 -|-|-|0|1|2|-|-|-|-|-|-
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
