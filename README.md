@@ -7,7 +7,9 @@ To easily represent the cube, p5 is being used.
 
 At least for the inital implementation of this case, each cube is an object so multiple variations can be followed in future steps.
 Each cube is simply represented as a one-dimensional 54 element array in the format: 
+
 > **[ U1, U2, U3... U8, L1,... F1,... R1,... B1, ..., D1,...]**
+
 Here, the faces are represented by
 *U = upper face
 *L = left face
