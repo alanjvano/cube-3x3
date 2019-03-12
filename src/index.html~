@@ -19,18 +19,18 @@
 <h1 align="center" class="standard">3x3-solver</h1>
  
 <div class="standard">
-	<input type="text" id="move" name="txt" onkeypress="getVal(event);"/>
-	<button type="button" class="norm_button" id="but1" onclick="getVal();">submit</button>
+	<form>
+		enter permutation: 
+		<input type="text" id="move" name="txt" onkeypress="getVal(event, id);">
+		<!-- <button type="button" class="norm_button" id="but1" onclick="getVal();">submit</button> -->
+		enter scramble length: 
+		<input type="text" id="scramble" value = "20" class="std" onkeypress="getVal(event,id);">
+		<!-- 	<button type="button" class="norm_button" id="scr_but" onclick="clickEvent(event,id)">scramble</button> -->
+	</form>
 </div>
 
 <script> 
-	function getVal(e) {
-		if (e.which == 13 || e.keyCode == 13) {
-			perm_in = document.getElementById("move").value;
-			console.log(perm_in);
-		}
-	}
-
+	
 </script>
 
 <div id="canvas-holder" align="center">

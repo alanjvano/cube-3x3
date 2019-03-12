@@ -1,7 +1,26 @@
 # cube-3x3
 
-The purpose of this project is to develop an algorithm to manipulate and solve a 3x3 Rubiks cube as quickly and efficiently as possible.
-To easily represent the cube, p5 is being used.
+The purpose of this project is to develop an algorithm to manipulate and solve a 3x3 Rubiks cube as quickly and efficiently as possible using javascript.
+The p5.js library is being used to display the cube.
+
+## Project Plan:
+### 1. Implement basic framework.  
+	* create cube as an object
+	* permutate cube given input
+	* represent cube in two dimensions
+	* check state of cube
+	* reset cube
+	* scramble cube
+	* setup html site with inputs, outputs, formatting
+### 2. Solve cube using simple method.
+	* efficiency and speed not goal here
+	* given any random scramble, find permuation sequence which will return cube to solved state
+### 3. Optimize solving method
+	* modify basic case to emulate Friedrich's Method (CFOP)
+	* maybe implement Reduction Method
+	* maybe implement Petrus Method
+### 4. Implement 3D representation of cube.
+
 
 ## Basic Framework:
 
@@ -14,7 +33,7 @@ Here, the faces are represented by
 * U = upper face
 * L = left face
 * F = front face
-* R = riht face
+* R = right face
 * B = back face
 * D = lower face (down)
 
@@ -51,4 +70,9 @@ The Cube.js prototype class is used to define a cube as an object.  This class h
 * perm() - this method accepts an input permutation sequence from the user and performs the permutations on the cube in order
 * checkState() - this method tests to see if the cube is in a solved state
 * show() - displays cube in 2d format on canvas
+* scramble() - scrambles cube with randomly generated sequence
+
+
+
+
 

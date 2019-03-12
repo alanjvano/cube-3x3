@@ -12,6 +12,19 @@ body {
 	justify-content: center;
 }
 
+form {
+	text-align: center;
+	display: inline;
+}
+
+input {
+	margin: 5px 50px 10px 5px;
+}
+
+input.std {
+	margin: 10px 5px 10px 5px;
+}
+
 h1, h2, h3 {
 	background-color: #000;
 	font-size: 25px;
@@ -20,16 +33,18 @@ h1, h2, h3 {
 h1.standard {
 	border-bottom: 3px solid rgb(76, 66, 218);
 	background-color: white;
+	margin: 10px 5px 5px;
 }
 
 div.standard {
 	margin: auto;
 	padding: 20px;
+	align: center;
 }
 
-button..norm_button {
+button.norm_button {
 	font-family: Arial, sans-serif;
 	display: block;
 	width: 100px;
-	margin 10px auto 0px auto;
+	margin 5px auto 0px auto;
 }

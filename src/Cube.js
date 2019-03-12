@@ -22,6 +22,45 @@ Cube.prototype.checkState = function() { //check solved state of cube
 	return this.state;
 };
 
+Cube.prototype.scramble = function(scr_len) {
+	//randomly select face permutation from valid list
+	let tmp;
+	let index;
+	let valid = clone(valid_perm);
+	let scr = [];
+	let prev;
+	for (let i = 0; i < scr_len; i++) {
+		
+		// if scramble not empty, remove previous permutation from valid list
+		if (scr.length != 0) {
+			index = valid.indexOf(prev);
+			valid.splice(index,1);
+		}
+		
+		// choose random valid permutation and add to permutation list
+		tmp = Math.floor(Math.random()*(valid.length));
+		scr.push(valid[tmp]);
+		prev = valid[tmp];
+
+		// pick random direction: clockwise, counterclockwise, or double
+		tmp = Math.floor(Math.random()*3)
+		if (tmp == 0) {
+			scr[scr.length-1] = scr[scr.length-1].toUpperCase();
+		} else if (tmp == 1) {
+			scr[scr.length-1] = scr[scr.length-1] += "2";
+		} else {
+			scr[scr.length-1] = scr[scr.length-1].toLowerCase();
+		}
+
+		// reset permutaion list
+		valid = clone(valid_perm);			
+	}
+
+	scr = scr.join('');
+	console.log("scramble", scr);
+	return scr;
+}
+
 Cube.prototype.perm = function(p_str) {
 	
 	// split permuation str into individual chars and push them to array	
