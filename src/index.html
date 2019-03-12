@@ -11,6 +11,7 @@
 
 	<script src="sketch.js"></script>
 	<script src="Cube.js"></script>
+	<script src="Cross.js"></script>
 
 	<link REL="StyleSheet" TYPE="text/css" HREF="cubestyle.css">
 </head>
@@ -29,18 +30,19 @@
 	</form> </div>
 
 	<div class="inner">
-		<button type="button" class="norm_button" id="rst" onclick="clickEvent(id)">reset cube</button>
+		<button type="button" id="rst" onclick="clickEvent(id)">reset cube</button>
 	</div>
 </div>
 
-<script> 
-	
-</script>
-
-<div id="canvas-holder" align="center">
-	<!-- sketch -->
+<div class="row">
+	<div id="canvas-holder" class="column left" align="center">
+		<!-- sketch -->
+	</div>
+	<div class="columnn right" background-color="rgb(0,255,0);" align="center">
+		<h2 class="standard">Solution</h2>
+		<button type="button" class="col_button" id="cross" onclick="clickEvent(id)">solve cross</button>
+	</div>
 </div>
-
   
 </body>
 </html>
