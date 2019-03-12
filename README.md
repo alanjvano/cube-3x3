@@ -11,12 +11,12 @@ Each cube is simply represented as a one-dimensional 54 element array in the for
 > **[ U1, U2, U3... U8, L1,... F1,... R1,... B1, ..., D1,...]**
 
 Here, the faces are represented by
-*U = upper face
-*L = left face
-*F = front face
-*R = riht face
-*B = back face
-*D = lower face (down)
+* U = upper face
+* L = left face
+* F = front face
+* R = riht face
+* B = back face
+* D = lower face (down)
 
 The Cube.js prototype class is used to define a cube as an object.  This class handle basic cube manipulations including:
 	- perm() - this method accepts an input permutation sequence from the user and performs the permutations on the cube in order
