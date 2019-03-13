@@ -46,12 +46,6 @@ body {
 	float: right;
 }
 
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 form {
 	text-align: center;
 }
@@ -80,10 +74,31 @@ h2.standard {
 	font-size: 20px;
 }
 
+#side-title {
+	border: 1px solid #000;
+}
+
 div.standard {
 	margin: 0px;
 	padding: 0px;
 	align: center;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 1em;
+	/* grid-auto-rows: minmax(100px, auto); */
+}
+
+.grid > div {
+	background: #fff;
+	padding: 1em;
+	margin: 1em;
+}
+
+.grid > div.input {
+	background: #bbb;
 }
 
 button {

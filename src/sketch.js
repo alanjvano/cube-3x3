@@ -6,9 +6,18 @@ let grid;
 let cube1;
 
 //inputs from html page
-let perm_in;
-let scr_in;
-let rst_in;
+let perm_in = false;
+let scr_in = false;
+let rst_in = false;
+let crs_in = false;
+
+//define solved cube state
+const solved = Array(54);
+for (let i = 0; i < 6; i++) {
+	for (let j = 0; j < 9; j++) {
+		solved[i*9+j]=i;
+	}
+}
 
 //define permutation cycles for face turns
 const perms = {
@@ -20,11 +29,42 @@ const perms = {
 	d: [[45,47,53,51],[46,50,52,48],[24,33,42,15],[25,34,43,16],[26,35,44,17]]
 };
 
-const edges =  [[1,47],[3,10],[5,28],[7,19],
+const edges =  [[1,37],[3,10],[5,28],[7,19],
 	        [12,41],[14,21],[16,48],
 	        [23,30],[25,46],
 	        [32,39],[34,50],
 		[43,52]];
+
+// define array method to compare two arrays
+// will be useful in future solution methods
+// based on method proposed by Tomas Zato
+Array.prototype.isEqual = function(arr) {
+	//if array is just false, then return false
+	if (!arr) {
+		return false;
+	}
+
+	//check if lengths are equal
+	if (this.length != arr.length) {
+		return false;
+	}
+
+	//check to see if each index is equal
+	for (let i = 0; i < this.length; i++) {
+		//check for nested array
+		if (this[i] instanceof Array && arr[i] instanceof Array) {
+			for (let j = 0; j < this[i].length; j++) {
+				if (this[i][j] != arr[i][j]) {
+					return false;
+				}
+			}
+		} else if (this[i] != arr[i]) {
+			return false;
+		}
+	}
+
+	return true;
+}
 
 function getVal(e, id) {
 	if (e.which == 13 || e.keyCode == 13) {
@@ -40,6 +80,8 @@ function getVal(e, id) {
 function clickEvent(id) {
 	if (id == "rst") {
 		rst_in = true;	
+	} else if (id == "cross") {
+		crs_in = true;
 	}
 }
 
@@ -80,8 +122,6 @@ function draw() {
 	background(255);
 	//console.log(perm_in);
 	
-	solveCross(cube1);
-
 	// check permutation input
 	if (perm_in != null && perm_in != "") {
 		cube1.perm(perm_in);
@@ -100,6 +140,14 @@ function draw() {
 		cube1.reset();
 		rst_in = false;
 	}
+
+	// check cross
+	if (crs_in) {
+		cube1.solveCross(5);
+		crs_in = false;
+	}
+
+	//console.log(crs_in);
 
 	cube1.show();
 	//debugger;

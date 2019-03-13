@@ -3,6 +3,7 @@ var Cube = function() {
 	// white:0, orange:1, green:2, red:3, blue:4, yellow:5
 	this.cube = new Array(54);
 	this.state = true;
+	this.sol = [];
 	for (let i = 0; i < 6; i++) {
 		for (let j = 0; j < 9; j++) {
 			this.cube[i*9+j]=i;

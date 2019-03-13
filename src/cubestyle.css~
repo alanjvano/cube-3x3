@@ -46,12 +46,6 @@ body {
 	float: right;
 }
 
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 form {
 	text-align: center;
 }
@@ -80,18 +74,44 @@ h2.standard {
 	font-size: 20px;
 }
 
+#side-title {
+	border: 1px solid #000;
+}
+
 div.standard {
 	margin: 0px;
 	padding: 0px;
 	align: center;
 }
 
-button.norm_button {
+.grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 1em;
+	/* grid-auto-rows: minmax(100px, auto); */
+}
+
+.grid > div {
+	background: #fff;
+	padding: 1em;
+	margin: 2em;
+}
+
+.grid > div.input {
+	background: #bbb;
+}
+
+button {
 	font-family: Arial, sans-serif;
 	display: block;
 	width: 100px;
 	margin 5px auto 0px auto;
 }
+
+button.col_button {
+	align: center;
+}
+	
 
 #outer {
 	width: 100%;
