@@ -17,6 +17,7 @@ Cube.prototype.findCrossEdges = function(color) {
 
 }
 
+//find target location for each cross edge piece
 Cube.prototype.findCrossTargets = function(edg_loc) {
 	// locate the target of each cross edge piece in order	
 	let target = [];
@@ -43,13 +44,21 @@ Cube.prototype.findCrossTargets = function(edg_loc) {
 
 }
 
+Cube.prototype.solveEdge = function(position, target) {
+	//check edge on same side as target {
+	if (Math.floor(position/9) == Math.floor(target/9)) {
+		// do something
+	} else if (Math.floor(position)) {
+
+	}
+}
+
 Cube.prototype.solveCross = function(color) {
 	
 	//While the cross is unsolved, check each cross edge position
 	//If a cross edge is in the incorrect location, solve it, then repeat
 
 	let edg_pos = this.findCrossEdges(color);
-	console.log("edg_pos",edg_pos);
 	let target = this.findCrossTargets(edg_pos);
 	console.log("target",target);
 	let edg = [];
@@ -57,7 +66,6 @@ Cube.prototype.solveCross = function(color) {
 		edg.push(edg_pos[i][0])
 	}
 	console.log("edg", edg);
-	console.log(edg.isEqual(target));	
 
 	while (!edg.isEqual(target)) {
 		

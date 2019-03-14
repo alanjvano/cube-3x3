@@ -71,9 +71,25 @@ Cube.prototype.reset = function() {
 	
 }
 
-Cube.prototype.perm = function(p_str) {
-	
-	// split permuation str into individual chars and push them to array	
+//an inverse operation essentially undoes a permutation
+//for example: (XY)^-1 = Y'X'
+Cube.prototype.inverse = function(p_str) {
+	let per = this.splitPerm(p_str);
+	let inverse = Array(per.length);
+	console.log(per);
+	for (let i = per.length; i > 0; i--) {
+		//reverse order
+		console.log(per[i]);
+		inverse[per.length-i] = clone(per[i-1]);
+		//reverse direction
+		inverse[per.length-i][1] = !(per[i-1][1]);
+	}
+	console.log('inverse',inverse);
+	return inverse;
+}	
+
+//split permutation sequence into individual chars and push them to array
+Cube.prototype.splitPerm = function(p_str) {
 	let p = [];
 	for (let i = 0; i < p_str.length; i++) {
 		
@@ -92,9 +108,17 @@ Cube.prototype.perm = function(p_str) {
 	}
 	console.log(p);
 
+	return p;
+
+}
+
+Cube.prototype.perm = function(p_str) {
+	
+	let p = this.splitPerm(p_str);
+
 	//check for invalid input
 	for (let i = 0; i < p.length; i++) {
-		if (!valid_perm.includes(p[i][0])) {
+		if (!valid_perm.includes(p[i][0]) && !valid_rot.includes(p[i][0])) {
 			console.log("not valid input");
 			return false;
 		}
@@ -103,10 +127,36 @@ Cube.prototype.perm = function(p_str) {
 	//implement turn sequence in order	
 	for (let each of p) {
 		console.log(each);
-		this.cube = this.turn(each, this.cube);
+
+		//implement single turn
+		if (valid_perm.includes(each[0])) {
+			this.cube = this.turn(each, this.cube);
+		} else {
+			this.cube = this.rotate(each);
+		}
 	}
 
 };
+
+Cube.prototype.rotate = function(dir) {
+	//def buffer cycle to adjust
+	let cycle = clone(rots[dir[0]]);
+
+	//flip direction if necessary
+	if (!dir[1] && !dir[2]) {
+		cycle = this.inverse(cycle);
+	} else {
+		cycle = this.splitPerm(cycle); 
+	}
+
+	console.log("rotation cycle", cycle);
+
+	for (let i = 0; i <= dir[2]; i++) {
+		for (let each of cycle) {
+			this.cube = this.turn(each, this.cube);
+		}
+	}
+}
 
 Cube.prototype.turn = function(dir, cube) {
 	//let args = clone(Array.prototype.slice.call(arguments));

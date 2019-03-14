@@ -38,8 +38,8 @@
 	<div id="canvas-holder" align="center">
 		<!-- sketch -->
 	</div>
-	<div align="center" class="input" id="side-title">
-		<h2 class="standard">Solution</h2>
+	<div align="center" class="input">
+		<h2 class="standard" id="side-title">Solution</h2>
 		<button type="button" class="col_button" id="cross" onclick="clickEvent(id)">solve cross</button>
 	</div>
 </div>
