@@ -17,6 +17,16 @@ Cube.prototype.findCrossEdges = function(color) {
 
 }
 
+Cube.prototype.findSlice = function(position) {
+	for (let i = 0; i < 4; i++) {
+		if (edges[i].includes(position) return 0; //upper slice
+	}
+	for (i = 4; i < 8; i++) { 
+		if (edges[i].includes(position) return 1;  //middle slice
+	}
+	return 2;  //bottom slice
+}
+
 //find target location for each cross edge piece
 Cube.prototype.findCrossTargets = function(edg_loc) {
 	// locate the target of each cross edge piece in order	
@@ -44,12 +54,40 @@ Cube.prototype.findCrossTargets = function(edg_loc) {
 
 }
 
-Cube.prototype.solveEdge = function(position, target) {
-	//check edge on same side as target {
-	if (Math.floor(position/9) == Math.floor(target/9)) {
-		// do something
-	} else if (Math.floor(position{
+Cube.prototype.sameSide = function(position, target) {
+	for (let i = 0; i < faces.length; i++) {
+		if (faces[i].includes(Math.floor(position/9)) && faces[i].includes(Math.floor(target/9))) {
+			return true;
+		}
+	}
+	return false;
+}
 
+Cube.prototype.solveEdge = function(position, target) {
+	//first, determine which slice position and target are in
+	let pos_slice = this.findSlice(position);
+	//target slice should always be on the bottom
+
+	// case 1: edge is on same slice
+	if (pos_Slice == 2) {
+		console.log('same slice');
+
+		//see if on same side
+		if (this.sameSide(position, target)) {
+			console.log('same side');
+		} else {
+			//need to flip edge
+			console.log('flip edge');
+		}
+
+	} else if (pos_slice) {
+		// case 2: edge is on middle slice
+		console.log('middle slice');
+
+
+	} else {
+		// case 3: edge is on opposite, upper slice
+		console.log('opposite slice');
 	}
 }
 

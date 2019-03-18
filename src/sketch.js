@@ -39,11 +39,12 @@ const rots = {
 	z: "FSb"
 };
 
-const edges =  [[1,37],[3,10],[5,28],[7,19],
-	        [12,41],[14,21],[16,48],
-	        [23,30],[25,46],
-	        [32,39],[34,50],
-		[43,52]];
+const edges =  [[1,37],[3,10],[5,28],[7,19],  //top slice
+	        [12,41],[14,21],[23,30],[32,39],  //middle slice
+	        [25,46],[16,48],[34,50],[43,52]];  //bottom slice
+
+//define opposite faces
+const faces = [[0,5],[1,3],[2,4]];
 
 // define array method to compare two arrays
 // will be useful in future solution methods
